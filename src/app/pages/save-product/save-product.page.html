@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>     
+    <ion-title>{{operation}} producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">{{saveLabel}}</ion-label>
+    <ion-input type="text"
+               [(ngModel)]="name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">¿Vas a poner una foto?</ion-label>
+    <ion-icon name="camera"></ion-icon>
+  </ion-item>
+  <ion-button type="submit" color="light"
+              (click)="backToMain()">Sácame de aquí</ion-button>
+  <ion-button type="button" color="primary" class="ion-float-right"
+              (click)="saveProduct()">Guardar</ion-button>
+</ion-content>

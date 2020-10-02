@@ -6,6 +6,14 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
+  },  
+  {
+    path: '',
+    loadChildren: () => import('../pages/settings/settings.module').then(m => m.SettingsPageModule)
+  },  
+  {
+    path: '',
+    loadChildren: () => import('../pages/save-product/save-product.module').then(m => m.SaveProductPageModule)
   }
 ];
 
