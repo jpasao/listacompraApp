@@ -9,7 +9,7 @@ export class SseService {
   constructor(private zone: NgZone) { }
 
   getServerSentEvent(url: string): Observable<any> {
-    return Observable.create(observer => {
+    return Observable.create((observer: any) => {
       const eventSource = this.getEventSource(url);
 
       eventSource.onmessage = event => {
@@ -30,9 +30,9 @@ export class SseService {
     return new EventSource(url);
   }
 
-  @HostListener('window:message', ['$event']) 
-  onPostMessage(event) {
-    // Reload list with data
-    var a = event;
-}
+  // @HostListener('window:message', ['$event']) 
+  // onPostMessage(event) {
+  //   // Reload list with data
+  //   var a = event;
+  // }
 }

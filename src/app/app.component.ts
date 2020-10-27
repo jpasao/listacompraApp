@@ -19,7 +19,7 @@ export class AppComponent {
       icon: 'basket'
     },
     {
-      title: 'Settings',
+      title: 'Opciones',
       url: '/settings',
       icon: 'settings'
     },

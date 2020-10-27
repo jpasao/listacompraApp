@@ -40,7 +40,6 @@ export class ProductService {
     }
 
     public checkProduct(id, checked) : Observable<any> {
-        //var fullPath = this.path + '&XDEBUG_SESSION_START=PHPSTORM';
         var obj = { productId: id, isChecked: checked };
         return this.httpService
             .patch(this.path, obj); 

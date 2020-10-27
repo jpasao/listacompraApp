@@ -15,6 +15,7 @@ export class HomePage {
   public filteredProducts: Product[];
   public searchTerm: string;
   private ssePath = environment.apiEndPoint + 'sendevent.php';
+
   @ViewChild('iframe') iframe: ElementRef;
   receiveMessage: EventListener;
   private sentEventSource: boolean;
@@ -81,7 +82,8 @@ export class HomePage {
     if (this.sentEventSource == false){
       this.sseService
         .getServerSentEvent(this.ssePath)
-        .subscribe(data => console.log(data)); 
+        .subscribe(data => 
+          this.getProducts(null)); 
       this.sentEventSource = true;
     }    
   }
