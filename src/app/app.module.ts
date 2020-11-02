@@ -5,6 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +15,7 @@ import { ProductService } from './services/product.service';
 
 import { HttpErrorInterceptor } from './http-error.interceptor';
 import { ErrorService } from './services/error.service';
+import { AuthorService } from './services/author.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +24,8 @@ import { ErrorService } from './services/error.service';
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    IonicStorageModule.forRoot()
   ],
   providers: [
     StatusBar,
@@ -37,7 +40,8 @@ import { ErrorService } from './services/error.service';
       multi: true 
     },
     ProductService,
-    ErrorService
+    ErrorService,
+    AuthorService
   ],
   bootstrap: [AppComponent]
 })

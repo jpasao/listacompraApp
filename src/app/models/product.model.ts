@@ -5,6 +5,7 @@ export class Product implements Deserializable {
     name: string;
     isChecked: string;
     checked: boolean;
+    quantity: number;
 
     deserialize(input: any): this {
         Object.assign(this, input);

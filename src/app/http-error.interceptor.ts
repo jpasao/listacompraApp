@@ -17,7 +17,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         public errorService: ErrorService,
         public ionLoader: LoaderService) {}   
 
-    private isDebugging = false;
+    private isDebugging = true;
         
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         this.showLoader(req.method, req.body);
@@ -75,5 +75,5 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         else {
             return req;
         }
-    }
+    }    
 }

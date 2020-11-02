@@ -1,42 +1,54 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>    
-    <ion-title>
-      Hay que comprar...
-      <ion-icon name="refresh-outline" class="ion-float-right" color="primary"
-                (click)="getProducts()"></ion-icon>   
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+
+        <ion-title>
+            Hay que comprar...
+            <ion-icon name="refresh-outline" class="ion-float-right" color="primary" (click)="getProducts()"></ion-icon>
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">  
-  <ion-refresher slot="fixed" (ionRefresh)="getProducts($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>  
-  <ion-searchbar showCancelButton="focus" placeholder="Buscar" animated="true"
-                 [(ngModel)]="searchTerm"
-                 (ionChange)="filterList()">
-  </ion-searchbar>
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Lista de la compra</ion-title>
-    </ion-toolbar>
-  </ion-header>    
-  <ion-list>
-    <ion-list-header lines="inset">
-    </ion-list-header>      
-    <ion-item *ngFor="let product of filteredProducts;">
-      <ion-icon name="camera" slot="start"></ion-icon>      
-      <ion-icon name="pencil" slot="start" 
-                (click)="editProduct(product)">
-      </ion-icon>
-      <ion-label [color]="product.checked ? 'medium' : 'dark'">{{product.name}}</ion-label>
-      <ion-checkbox slot="end"
-                    [(ngModel)]="product.checked"
-                    (click)="checkProduct(product)">
-      </ion-checkbox>   
-    </ion-item>
-  </ion-list>  
+<ion-content [fullscreen]="true">
+    <ion-refresher slot="fixed" (ionRefresh)="getProducts($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <ion-searchbar showCancelButton="focus" placeholder="Buscar" animated="true" [(ngModel)]="searchTerm"
+        (ionChange)="filterList()">
+    </ion-searchbar>
+
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">Lista de la compra</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-list>
+        <ion-list-header lines="inset"></ion-list-header>
+
+        <ion-item *ngFor="let product of filteredProducts;">
+            <ion-fab slot="start">
+                <ion-fab-button color="tertiary" size="small">
+                    <ion-icon md="chevron-forward-circle-outline" size="small"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-list side="end">
+                    <ion-fab-button color="light">
+                        <ion-icon name="camera"></ion-icon>
+                    </ion-fab-button>
+                    <ion-fab-button color="light">
+                        <ion-icon name="pencil" (click)="editProduct(product)"></ion-icon>
+                    </ion-fab-button>
+                </ion-fab-list>
+            </ion-fab>
+
+            <ion-badge class="badgeQuantity" color="medium" (click)="changeNumber(product)">{{product.quantity}}</ion-badge>
+
+            <ion-label [color]="product.checked ? 'light' : 'dark'">{{product.name}}</ion-label>
+
+            <ion-checkbox slot="end" [(ngModel)]="product.checked" (click)="checkProduct(product)"></ion-checkbox>
+        </ion-item>
+    </ion-list>
 </ion-content>

@@ -8,5 +8,14 @@
 </ion-header>
 
 <ion-content>
-  <p>Contenido de opciones</p>
+  <ion-item>
+    <ion-label position="stacked">Quién soy</ion-label>
+    <ion-input></ion-input>
+    <ion-select placeholder="Voy a ser..." interface="popover"
+                #authorSelect
+                [ngModel]="selectedAuthor"
+                (ionChange)="onAuthorChange(authorSelect.value)">
+      <ion-select-option *ngFor="let author of authorList" [value]="author.authorId">{{author.name}}</ion-select-option>
+    </ion-select>    
+  </ion-item>
 </ion-content>

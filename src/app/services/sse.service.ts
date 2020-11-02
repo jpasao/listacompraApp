@@ -29,10 +29,4 @@ export class SseService {
   private getEventSource(url: string): EventSource {
     return new EventSource(url);
   }
-
-  // @HostListener('window:message', ['$event']) 
-  // onPostMessage(event) {
-  //   // Reload list with data
-  //   var a = event;
-  // }
 }
